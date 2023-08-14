@@ -1,0 +1,22 @@
+nav {
+    background-color: lightblue;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+.navItem:hover {
+    background: grey;
+    opacity: 0.5;
+}
+.navItems {
+    font-family: Helvetica;
+    background-color: black;
+    color: white;
+    font-size: 28px;
+    padding: 5px;
+}
+a {
+    width: 20%;
+    text-align: center;
+    text-decoration: none;
+}
