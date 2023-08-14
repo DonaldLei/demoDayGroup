@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="rpg.css" />
+    <title>Rpg</title>
+</head>
+<body>
+    
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"
+      integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    
+    <div id="game-div">
+        <div id="opponent-hand">
+            <div id="opponentHANDHAND">
+                
+            </div>
+            <t id="oppDeck">this is opponent deck</t>
+        </div>
+        
+        <div id="game"><script src='rpg.js'></script></div>
+        
+        <div id="your-hand">
+            <t id="deck">this is where the deck will be</t>
+            <div id="yourHANDHAND">
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="info">
+        <button id='resetInfoDiv' style='height:20px'>← </button>
+        <img id='info-img'>
+        <div id='organized-info'>
+            <h1 id="info-name"></h1>
+            <t1 id="info-description"></t1>
+        </div><br>
+        <div id="actions">
+            <br>
+            <button id="cast">Cast</button>
+        </div>
+    </div>
+    <br>
+    <button id='back-button'><a href='../index.html'>Go Back To Homepage</a></button>
+
+    <script id='cards' src='cards.js'></script>
+
+</body>
+</html>
