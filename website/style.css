@@ -1,5 +1,5 @@
 nav {
-    background-color: lightblue;
+    background-color: navy;
     padding: 5px;
     display: flex;
     justify-content: space-around;
@@ -19,4 +19,20 @@ a {
     width: 20%;
     text-align: center;
     text-decoration: none;
+}
+#missionStatement {
+    text-align: center;
+}
+#team {
+    text-align: center;
+}
+#webTitle {
+    text-align: center;
+    background-color: lightblue;
+}
+h1 {
+    text-align: center;
+}
+body {
+    background-color: lightblue;
 }
