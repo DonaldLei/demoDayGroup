@@ -1,6 +1,7 @@
 class OverworldMap {
     constructor(config) {
         this.gameObjects = config.gameObjects;
+        this.walls = config.walls || {};
 
         this.lowerImage = new Image();
         this.lowerImage.src = config.lowerSrc;
@@ -31,8 +32,8 @@ class OverworldMap {
 window.OverworldMaps = {
 //Put in maps
     DemoRoom: {
-        lowerSrc: "/rpg-game/images/maps/DemoLower.png",
-        upperSrc: "/rpg-game/images/maps/DemoUpper.png",
+        lowerSrc: "rpg-game/images/maps/DemoLower.png",
+        upperSrc: "rpg-game/images/maps/DemoUpper.png",
         gameObjects: {
             hero: new Person({
                 isPlayerControlled: true,
@@ -43,14 +44,21 @@ window.OverworldMaps = {
                 
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
-                src: "/rpg-game/images/characters/people/npc1.png"
+                src: "rpg-game/images/characters/people/npc1.png"
 
             })
+        },
+        walls: {
+            //"16,16": true
+            [utils.asGridCoord(7,6)]: true,
+            [utils.asGridCoord(8,6)]: true,
+            [utils.asGridCoord(7,7)]: true,
+            [utils.asGridCoord(8,7)]: true,
         }
     },
     Kitchen: {
-        lowerSrc: "/rpg-game/images/maps/KitchenLower.png",
-        upperSrc: "/rpg-game/images/maps/KitchenUpper.png",
+        lowerSrc: "rpg-game/images/maps/KitchenLower.png",
+        upperSrc: "rpg-game/images/maps/KitchenUpper.png",
         gameObjects: {
             hero: new GameObject({
                 x: 5,
@@ -59,7 +67,7 @@ window.OverworldMaps = {
             npc1: new GameObject({
                 x: 7,
                 y: 9,
-                src: "/rpg-game/images/characters/people/npc1.png"
+                src: "rpg-game/images/characters/people/npc1.png"
         
             })           
         }

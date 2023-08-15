@@ -20,7 +20,7 @@ class Overworld {
                     arrow: this.directionInput.direction
                 })
             })
-            
+
             this.map.drawLowerImage(this.ctx, cameraPerson);
 
             Object.values(this.map.gameObjects).forEach(object => {
@@ -39,6 +39,7 @@ class Overworld {
 
     init() {
         this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+        console.log(this.map.walls);
         
         this.directionInput = new DirectionInput();
         this.directionInput.init();
