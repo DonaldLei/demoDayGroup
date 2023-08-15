@@ -32,8 +32,8 @@ class OverworldMap {
 window.OverworldMaps = {
 //Put in maps
     DemoRoom: {
-        lowerSrc: "rpg-game/images/maps/DemoLower.png",
-        upperSrc: "rpg-game/images/maps/DemoUpper.png",
+        lowerSrc: "/rpg-game/images/maps/DemoLower.png",
+        upperSrc: "/rpg-game/images/maps/DemoUpper.png",
         gameObjects: {
             hero: new Person({
                 isPlayerControlled: true,
@@ -44,7 +44,7 @@ window.OverworldMaps = {
                 
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
-                src: "rpg-game/images/characters/people/npc1.png"
+                src: "/rpg-game/images/characters/people/npc1.png"
 
             })
         },
@@ -57,8 +57,8 @@ window.OverworldMaps = {
         }
     },
     Kitchen: {
-        lowerSrc: "rpg-game/images/maps/KitchenLower.png",
-        upperSrc: "rpg-game/images/maps/KitchenUpper.png",
+        lowerSrc: "/rpg-game/images/maps/KitchenLower.png",
+        upperSrc: "/rpg-game/images/maps/KitchenUpper.png",
         gameObjects: {
             hero: new GameObject({
                 x: 5,
@@ -67,7 +67,7 @@ window.OverworldMaps = {
             npc1: new GameObject({
                 x: 7,
                 y: 9,
-                src: "rpg-game/images/characters/people/npc1.png"
+                src: "/rpg-game/images/characters/people/npc1.png"
         
             })           
         }
