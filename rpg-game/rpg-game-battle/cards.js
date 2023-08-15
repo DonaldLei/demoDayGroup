@@ -12,7 +12,7 @@ let infoDesc=document.getElementById('info-description');
 let ClrInfoDivBTN=document.getElementById('resetInfoDiv');
 let cardCastBTN=document.getElementById('cast');
 cardCastBTN.style.visibility='hidden';
-let cardInfoShown=false;
+let cardInfoShown=false; let cardNmbShown=0;
 
 const card={
 	name:"test",
@@ -32,7 +32,7 @@ function createOpponentCard(){
 }
 function createPlayerCard(){
 	let newPlayerCard=Object.create(card);
-	newPlayerCard.name='pikachu';
+	newPlayerCard.name='definitely pikachu';
 	newPlayerCard.image='./images/animallogic_Luna.png';
 	newPlayerCard.PlayerCard=true;
 	newPlayerCard.description='pika';
@@ -43,6 +43,7 @@ function createPlayerCard(){
 function displayCards(){
 	for(let i=0;i<oppHand.length;i++){
 		let x=document.createElement('img');
+		x.setAttribute('class','OpponentCards');
 		x.src=oppHand[i].image;
 		x.style.width='85px';
 		let xName=oppHand[i].name+" "+(i+1);
@@ -53,9 +54,10 @@ function displayCards(){
 			infoImg.src=x.src;
 			infoName.innerHTML=xName;
 			infoDesc.innerHTML=xDesc;
-			cardInfoShown=true;cardCastBTN.style.visibility='visible';
+			cardInfoShown=true;
 		}
 		opponentHand.append(x);
+		
 
 		// x.onmouseover=()=>{
 		// 	infoImg.src=x.src;
@@ -70,6 +72,7 @@ function displayCards(){
 	}
 	for(let i=0;i<plyrHand.length;i++){
 		let y=document.createElement('img');
+		y.setAttribute('class','PlayerCards');
 		y.src=plyrHand[i].image;
 		y.style.width='85px';
 		let yName=plyrHand[i].name+" "+(i+1);
@@ -81,6 +84,7 @@ function displayCards(){
 			infoName.innerHTML=yName;
 			infoDesc.innerHTML=yDesc;
 			cardInfoShown=true;cardCastBTN.style.visibility='visible';
+			cardNmbShown=plyrHand[i].cardPos;
 		}
 		// y.onmouseover=()=>{
 		// 	infoImg.src=y.src;
@@ -102,11 +106,33 @@ ClrInfoDivBTN.onclick=()=>{
 	infoName.innerHTML="";
 	infoDesc.innerHTML="";
 	cardInfoShown='false';cardCastBTN.style.visibility='hidden';
+	// console.log()
 }
+let castBTN=document.getElementById('cast');
+castBTN.onclick=()=>{
+	ClrInfoDivBTN.onclick();
+	console.log(cardNmbShown);
+	plyrHand.splice(cardNmbShown-1,1);
+	console.log(plyrHand);
+	// if(cardsInHand.hasChildNodes())
+	playerHand.removeChild(playerHand.children[cardNmbShown-1]);
+	console.log(playerHand);
+}
+
+
+
+
 
 for(let j=0;j<5;j++){
 	createOpponentCard();
 	createPlayerCard();
 }
-
-displayCards();
+opponentHand.style.opacity=0;
+playerHand.style.opacity=0;
+setTimeout(
+()=>{
+	displayCards();
+	for(let g=0;g<2;g+=0.2){
+		opponentHand.style.opacity=g;playerHand.style.opacity=g;
+	}
+},25);
