@@ -31,7 +31,7 @@ class GameObject {
 async doBehaviorEvent(map){
 
     //don't do anything if a important cutscene is playing or no config to do anything
-    if (map.isCutscenePlaying || this.behaviorLoop.length === 0){
+    if (map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding){
         return;
     }
 
@@ -39,7 +39,7 @@ async doBehaviorEvent(map){
     let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
     eventConfig.who = this.id;
     //create event
-    const eventHandler = new overworldEvent({map, event: eventConfig});
+    const eventHandler = new OverworldEvent({map, event: eventConfig});
     await eventHandler.init();
     //setting new event
     this.behaviorLoopIndex += 1;
