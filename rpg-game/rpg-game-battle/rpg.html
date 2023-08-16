@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="rpg.css" />
-    <title>Rpg</title>
+    <title>Rpg Fight</title>
 </head>
 <body>
     
@@ -17,39 +17,21 @@
 
     
     <div id="game-div">
-        <div id="opponent-hand">
-            <div id="opponentHANDHAND">
-                
-            </div>
-            <t id="oppDeck">this is opponent deck</t>
-        </div>
-        
-        <div id="game"><script src='rpg.js'></script></div>
-        
-        <div id="your-hand">
-            <t id="deck">this is where the deck will be</t>
-            <div id="yourHANDHAND">
-                
+        <div id="questionprompt">
+            <img id="cardImg" style='width:150px' >
+            <div id="text">
+                <h1 id="cardName"></h1>
+                <p1 id="cardDescription"></p1>
             </div>
         </div>
-    </div>
-    <br>
-    <div id="info">
-        <button id='resetInfoDiv' style='height:20px'>← </button>
-        <img id='info-img'>
-        <div id='organized-info'>
-            <h1 id="info-name"></h1>
-            <t1 id="info-description"></t1>
-        </div><br>
-        <div id="actions">
-            <br>
-            <button id="cast">Cast</button>
+
+        <div id="p5">
+            <!-- <h1 id="test">test</h1> -->
+            <script src='rpg.js'></script>
+            <!-- <script src='test.js'></script> -->
         </div>
     </div>
-    <br>
-    <button id='back-button'><a href='../index.html'>Go Back To Homepage</a></button>
 
-    <script id='cards' src='cards.js'></script>
-
+    <button id='back-button'><a href='../../index.html'>Go Back To Homepage</a></button>
 </body>
 </html>
