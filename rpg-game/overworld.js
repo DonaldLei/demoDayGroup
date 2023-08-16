@@ -25,8 +25,9 @@ class Overworld {
 
             this.map.drawLowerImage(this.ctx, cameraPerson);
 
-            Object.values(this.map.gameObjects).forEach(object => {
-
+            Object.values(this.map.gameObjects).sort((a,b) => {
+                return a.y - b.y;
+            }).forEach(object => {
                 object.sprite.draw(this.ctx, cameraPerson);
             })
 
@@ -48,6 +49,11 @@ class Overworld {
         
         this.startGameLoop();
 
+        this.map.startCutscene([
+            {who: "hero", type: "walk", direction: "down"},
+            {who: "hero", type: "walk", direction: "down"},
+            {who: "hero", type: "walk", direction: "down"},
+        ])
         
     }  
 }

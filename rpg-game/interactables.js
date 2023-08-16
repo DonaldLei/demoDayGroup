@@ -39,7 +39,7 @@ async doBehaviorEvent(map){
     let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
     eventConfig.who = this.id;
     //create event
-    const eventHandler = new OverworldEvent({map, event: eventConfig});
+    const eventHandler = new overworldEvent({map, event: eventConfig});
     await eventHandler.init();
     //setting new event
     this.behaviorLoopIndex += 1;

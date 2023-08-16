@@ -9,7 +9,7 @@ class OverworldMap {
         this.upperImage = new Image();
         this.upperImage.src = config.upperSrc;
 
-        this.isCutscenePlaying = false;
+        this.isCutscenePlaying = true;
     }
 
     drawLowerImage(ctx, cameraPerson){
@@ -40,6 +40,21 @@ class OverworldMap {
             object.id = key;
             object.mount(this);
         })
+    }
+
+    async startCutscene(events){
+        this.isCutscenePlaying = true;
+
+        //loop
+        for (let i=0; i<events.length; i++){
+            const eventHandler = new OverworldEvent({
+                event: events[i],
+                map: this,
+            })
+            await eventHandler.init();
+        }
+
+        this.isCutscenePlaying = false;
     }
     addWall(x,y){
         this.walls[`${x},${y}`] = true;
@@ -78,9 +93,10 @@ window.OverworldMaps = {
                 y: utils.withGrid(4),
                 src: "/rpg-game/images/characters/people/npc2.png",
                 behaviorLoop: [
-                    {type: "stand", direction: "left", time: 800},
-                    {type: "stand", direction: "down", time: 800},
-                    {type: "stand", direction: "right", time: 800},
+                    {type:"stand",direction:"left",time:1000},
+                    {type:"stand",direction:"up",time:1000},
+                    {type:"stand",direction:"right",time:1000},
+                    {type:"stand",direction:"up",time:1000},
                 ]
             }),
         },
