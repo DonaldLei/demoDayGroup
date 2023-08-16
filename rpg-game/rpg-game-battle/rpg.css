@@ -1,34 +1,21 @@
-body{
-
-}
 #game-div{
 	display:flex;
-	justify-content: space-between;
-/*	gap:20px;*/
+	flex-direction: column-reverse;
+	gap:5px;
 }
-#game{
-	order:0;
-}
-#opponent-hand{
-	border:1px solid black;
-	display:flex;
-	flex-direction: column;
-	width:425px;
-}
-#your-hand{
-	order:1;align-self: end;
-	border:1px solid black;
-	display:flex;
-	flex-direction: column;
-	width:425px;
-}
-#deck{padding-bottom: 350px}
-#oppDeck{padding-top: 350px}
-
-#info{
+#questionprompt{
 	border:1px solid black;
 	height:175px;
-	display:flex;
-	gap:25px;
+	display: flex;
+	gap:20px;
+/*	border: none;*/
 }
-#organized-info{display: flex;flex-direction: column;align-content: space-between;}
+#cardImg{
+	height:175px;
+	
+}
+#text{
+	display: flex;
+	flex-direction: column;
+/*	border: none;*/
+}
