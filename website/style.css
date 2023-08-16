@@ -1,6 +1,6 @@
 nav {
-    background-color: lightblue;
-    padding: 5px;
+    background-color: blue;
+    padding: 15px;
     display: flex;
     justify-content: space-around;
 }
@@ -8,15 +8,34 @@ nav {
     background: grey;
     opacity: 0.5;
 }
-.navItems {
+.navItem {
     font-family: Helvetica;
-    background-color: black;
-    color: white;
-    font-size: 28px;
+    background-color: blue;
+    color: black;
+    font-size: 18px;
     padding: 5px;
 }
 a {
     width: 20%;
     text-align: center;
     text-decoration: none;
+}
+#missionStatement {
+    text-align: center;
+}
+#team {
+    text-align: center;
+}
+#webTitle {
+    text-align: center;
+    background-color: lightblue;
+}
+h1 {
+    text-align: center;
+}
+body {
+    background-color: lightblue;
+}
+.satDesc {
+    text-align: right;
 }
