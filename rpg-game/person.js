@@ -42,12 +42,17 @@ class Person extends GameObject {
     }
 }
     updatePosition(){
-        if (this.movingProgressRemaining > 0){
             const [property, change] = this.directionUpdate[this.direction];
             this[property] += change;
             this.movingProgressRemaining -= 1;
-        }
+
+            if(this.movingProgressRemaining === 0){
+                utils.emitEvent("PersonWalkingComplete", {
+                    whoId: this.id
+                })
+            }
     }
+    
 
     updateSprite() {
 
