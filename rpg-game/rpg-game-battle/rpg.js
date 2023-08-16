@@ -14,10 +14,10 @@ let card1;let card2;let card3;let card4;let card5;let card6;let card7;
 
 // data variables
 let enemeyHp=0;let playerHp=10;
-let cards=[];let cardsImg=[];let cardsUsed=[];
+let cards=[];let cardsImg=[];let cardsUsed=[,,,,];
 
 // control visibility
-let playerTurn=true;let cardChosen=false;let cardSelected=0;
+let playerTurn=true;let cardChosen=false;let cardSelected=0;moveSelected=0;
 let useBTNx=700;let useBTNy=400;
 let endTrnBTNx=700;let endTrnBTNy=460;
 let moveUsdY=100;
@@ -219,180 +219,180 @@ let gamep5=new p5(
 
 			// use card
 			if(sketch.mouseX>700&&sketch.mouseX<751 && sketch.mouseY>400&&sketch.mouseY<451){
-				if(cardsUsed[0]==null){
+				if(cardsUsed[0]==null || cardsUsed[0]=='test'){
 					if(cardSelected==1 && card1.used==false){
 					card1.x=550;card1.y=100;
 					card1.used=true;
-					cardsUsed.push(card1);
+					cardsUsed.splice(0,1,card1);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==2 && card2.used==false){
 					card2.x=550;card2.y=100;
 					card2.used=true;
-					cardsUsed.push(card2);
+					cardsUsed.splice(0,1,card2);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==3 && card3.used==false){
 					card3.x=550;card3.y=100;
 					card3.used=true;
-					cardsUsed.push(card3);
+					cardsUsed.splice(0,1,card3);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==4 && card4.used==false){
 					card4.x=550;card4.y=100;
 					card4.used=true;
-					cardsUsed.push(card4);
+					cardsUsed.splice(0,1,card4);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==5 && card5.used==false){
 					card5.x=550;card5.y=100;
 					card5.used=true;
-					cardsUsed.push(card5);
+					cardsUsed.splice(0,1,card5);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==6 && card6.used==false){
 					card6.x=550;card6.y=100;
 					card6.used=true;
-					cardsUsed.push(card6);
+					cardsUsed.splice(0,1,card6);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==7 && card7.used==false){
 					card7.x=550;card7.y=100;
 					card7.used=true;
-					cardsUsed.push(card7);
+					cardsUsed.splice(0,1,card7);
 					console.log(cards);console.log(cardsUsed);
 					}
 				}
-				else if(cardsUsed[1]==null && !(!cardsUsed.hasOwnProperty(0))){
+				else if(cardsUsed[1]==null || cardsUsed[1]=='test' && !(!cardsUsed.hasOwnProperty(0))){
 					if(cardSelected==1 && card1.used==false){
 					card1.x=650;card1.y=100;
 					card1.used=true;
-					cardsUsed.push(card1);
+					cardsUsed.splice(1,1,card1);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==2 && card2.used==false){
 					card2.x=650;card2.y=100;
 					card2.used=true;
-					cardsUsed.push(card2);
+					cardsUsed.splice(1,1,card2);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==3 && card3.used==false){
 					card3.x=650;card3.y=100;
 					card3.used=true;
-					cardsUsed.push(card3);
+					cardsUsed.splice(1,1,card3);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==4 && card4.used==false){
 					card4.x=650;card4.y=100;
 					card4.used=true;
-					cardsUsed.push(card4);
+					cardsUsed.splice(1,1,card4);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==5 && card5.used==false){
 					card5.x=650;card5.y=100;
 					card5.used=true;
-					cardsUsed.push(card5);
+					cardsUsed.splice(1,1,card5);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==6 && card6.used==false){
 					card6.x=650;card6.y=100;
 					card6.used=true;
-					cardsUsed.push(card6);
+					cardsUsed.splice(1,1,card6);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==7 && card7.used==false){
 					card7.x=650;card7.y=100;
 					card7.used=true;
-					cardsUsed.push(card7);
+					cardsUsed.splice(1,1,card7);
 					console.log(cards);console.log(cardsUsed);
 					}
 				}
-				else if(cardsUsed[2]==null && !(!cardsUsed.hasOwnProperty(1))){
+				else if(cardsUsed[2]==null || cardsUsed[2]=='test' && !(!cardsUsed.hasOwnProperty(1))){
 					if(cardSelected==1 && card1.used==false){
 					card1.x=750;card1.y=100;
 					card1.used=true;
 					// card1.used=true;
-					cardsUsed.push(card1);
+					cardsUsed.splice(2,1,card1);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==2 && card2.used==false){
 					card2.x=750;card2.y=100;
 					card2.used=true;
-					cardsUsed.push(card2);
+					cardsUsed.splice(2,1,card2);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==3 && card3.used==false){
 					card3.x=750;card3.y=100;
 					card3.used=true;
-					cardsUsed.push(card3);
+					cardsUsed.splice(2,1,card3);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==4 && card4.used==false){
 					card4.x=750;card4.y=100;
 					card4.used=true;
-					cardsUsed.push(card4);
+					cardsUsed.splice(2,1,card4);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==5 && card5.used==false){
 					card5.x=750;card5.y=100;
 					card5.used=true;
-					cardsUsed.push(card5);
+					cardsUsed.splice(2,1,card5);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==6 && card6.used==false){
 					card6.x=750;card6.y=100;
 					card6.used=true;
-					cardsUsed.push(card6);
+					cardsUsed.splice(2,1,card6);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==7 && card7.used==false){
 					card7.x=750;card7.y=100;
 					card7.used=true;
-					cardsUsed.push(card7);
+					cardsUsed.splice(2,1,card7);
 					console.log(cards);console.log(cardsUsed);
 					}
 				}
-				else if(cardsUsed[3]==null && !(!cardsUsed.hasOwnProperty(2))){
+				else if(cardsUsed[3]==null || cardsUsed[3]=='test' && !(!cardsUsed.hasOwnProperty(2))){
 					if(cardSelected==1 && card1.used==false){
 					card1.x=850;card1.y=100;
 					card1.used=true;
-					cardsUsed.push(card1);
+					cardsUsed.splice(3,1,card1);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==2 && card2.used==false){
 					card2.x=850;card2.y=100;
 					card2.used=true;
-					cardsUsed.push(card2);
+					cardsUsed.splice(3,1,card2);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==3 && card3.used==false){
 					card3.x=850;card3.y=100;
 					card3.used=true;
-					cardsUsed.push(card3);
+					cardsUsed.splice(3,1,card3);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==4 && card4.used==false){
 					card4.x=850;card4.y=100;
 					card4.used=true;
-					cardsUsed.push(card4);
+					cardsUsed.splice(3,1,card4);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==5 && card5.used==false){
 					card5.x=850;card5.y=100;
 					card5.used=true;
-					cardsUsed.push(card5);
+					cardsUsed.splice(3,1,card5);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==6 && card6.used==false){
 					card6.x=850;card6.y=100;
 					card6.used=true;
-					cardsUsed.push(card6);
+					cardsUsed.splice(3,1,card6);
 					console.log(cards);console.log(cardsUsed);
 					}
 					if(cardSelected==7 && card7.used==false){
 					card7.x=850;card7.y=100;
 					card7.used=true;
-					cardsUsed.push(card7);
+					cardsUsed.splice(3,1,card7);
 					console.log(cards);console.log(cardsUsed);
 					}
 				}
@@ -401,42 +401,200 @@ let gamep5=new p5(
 				// https://stackoverflow.com/questions/62837178/how-to-check-if-an-array-index-is-a-hole-empty
 				
 			}
+
+			// return cards to position if player wants to undo
+
+			function returnCardsToHand(){
+				for(let n1=0;n1<4;n1++){
+					if(moveSelected==n1+1){
+						for(let n2=n1;n2<cardsUsed.length;n2++){
+							if(!(!cardsUsed.hasOwnProperty(n2+1))){
+
+								if(cardsUsed[n2+1]==card1){card1.x=800;card1.y=370;	cardsUsed.splice(n2+1,1,'test');	card1.used=false;}
+								if(cardsUsed[n2+1]==card2){card2.x=900;card2.y=370;	cardsUsed.splice(n2+1,1,'test');	card2.used=false;}
+								if(cardsUsed[n2+1]==card3){card3.x=1000;card3.y=370;	cardsUsed.splice(n2+1,1,'test');	card3.used=false;}
+								if(cardsUsed[n2+1]==card4){card4.x=1100;card4.y=370;	cardsUsed.splice(n2+1,1,'test');	card4.used=false;}
+								if(cardsUsed[n2+1]==card5){card5.x=1200;card5.y=370;	cardsUsed.splice(n2+1,1,'test');	card5.used=false;}
+								if(cardsUsed[n2+1]==card6){card6.x=1300;card6.y=370;	cardsUsed.splice(n2+1,1,'test');	card6.used=false;}
+								if(cardsUsed[n2+1]==card7){card7.x=1400;card7.y=370;	cardsUsed.splice(n2+1,1,'test');	card7.used=false;}
+								moveSelected=0;
+							}
+
+						}
+
+
+					}
+				}
+			}	
+
+			
 			if((sketch.mouseX>550&&sketch.mouseX<651 && sketch.mouseY>100&&sketch.mouseY<251)){
-				// return cards to position if undo
+				console.log('1st move clicked')
 				if(cardsUsed[0]==card1){
-					card1.x=800;card1.y=370;	cardsUsed.splice(0,1);	card1.used=false;
+					card1.x=800;card1.y=370;	cardsUsed.splice(0,1,'test');	card1.used=false;
+					if(!(!cardsUsed.hasOwnProperty(1))){	moveSelected=1; returnCardsToHand();
 				}
+				}else 
 				if(cardsUsed[0]==card2){
-					card2.x=900;card2.y=370;	cardsUsed.splice(0,1);	card2.used=false;
+					card2.x=900;card2.y=370;	cardsUsed.splice(0,1,'test');	card2.used=false;
+					if(!(!cardsUsed.hasOwnProperty(1))){	moveSelected=1; returnCardsToHand();
 				}
+				}else 
 				if(cardsUsed[0]==card3){
-					card3.x=1000;card3.y=370;	cardsUsed.splice(0,1);	card3.used=false;
+					card3.x=1000;card3.y=370;	cardsUsed.splice(0,1,'test');	card3.used=false;
+					if(!(!cardsUsed.hasOwnProperty(1))){	moveSelected=1; returnCardsToHand();
 				}
+				}else 
 				if(cardsUsed[0]==card4){
-					card4.x=1100;card4.y=370;	cardsUsed.splice(0,1);	card4.used=false;
+					card4.x=1100;card4.y=370;	cardsUsed.splice(0,1,'test');	card4.used=false;
+					if(!(!cardsUsed.hasOwnProperty(1))){	moveSelected=1; returnCardsToHand();
 				}
+				}else 
 				if(cardsUsed[0]==card5){
-					card5.x=1200;card5.y=370;	cardsUsed.splice(0,1);	card5.used=false;
+					card5.x=1200;card5.y=370;	cardsUsed.splice(0,1,'test');	card5.used=false;
+					if(!(!cardsUsed.hasOwnProperty(1))){	moveSelected=1; returnCardsToHand();
 				}
+				}else 
 				if(cardsUsed[0]==card6){
-					card6.x=1300;card6.y=370;	cardsUsed.splice(0,1);	card6.used=false;
+					card6.x=1300;card6.y=370;	cardsUsed.splice(0,1,'test');	card6.used=false;
+					if(!(!cardsUsed.hasOwnProperty(1))){	moveSelected=1; returnCardsToHand();
 				}
+				}else 
 				if(cardsUsed[0]==card7){
-					card7.x=1400;card7.y=370;	cardsUsed.splice(0,1);	card7.used=false;
+					card7.x=1400;card7.y=370;	cardsUsed.splice(0,1,'test');	card7.used=false;
+					if(!(!cardsUsed.hasOwnProperty(1))){	moveSelected=1; returnCardsToHand();
+				}
+				}
+				console.log(cardsUsed);
+			}
+			if((sketch.mouseX>650&&sketch.mouseX<751 && sketch.mouseY>100&&sketch.mouseY<251)){
+				console.log('2nd move clicked')
+				if(cardsUsed[1]==card1){
+					card1.x=800;card1.y=370;	cardsUsed.splice(1,1,'test');	card1.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=2; returnCardsToHand();
+				}
+				}else 
+				if(cardsUsed[1]==card2){
+					card2.x=900;card2.y=370;	cardsUsed.splice(1,1,'test');	card2.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=2; returnCardsToHand();
+				}
+				}else 
+				if(cardsUsed[1]==card3){
+					card3.x=1000;card3.y=370;	cardsUsed.splice(1,1,'test');	card3.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=2; returnCardsToHand();
+				}
+				}else 
+				if(cardsUsed[1]==card4){
+					card4.x=1100;card4.y=370;	cardsUsed.splice(1,1,'test');	card4.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=2; returnCardsToHand();
+				}
+				}else 
+				if(cardsUsed[1]==card5){
+					card5.x=1200;card5.y=370;	cardsUsed.splice(1,1,'test');	card5.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=2; returnCardsToHand();
+				}
+				}else 
+				if(cardsUsed[1]==card6){
+					card6.x=1300;card6.y=370;	cardsUsed.splice(1,1,'test');	card6.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=2; returnCardsToHand();
+				}
+				}else 
+				if(cardsUsed[1]==card7){
+					card7.x=1400;card7.y=370;	cardsUsed.splice(1,1,'test');	card7.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=2; returnCardsToHand();
+				}
+				}
+				console.log(cardsUsed);
+			}
+			if((sketch.mouseX>750&&sketch.mouseX<851 && sketch.mouseY>100&&sketch.mouseY<251)){
+				console.log('3rd move clicked')
+				if(cardsUsed[2]==card1){
+					card1.x=800;card1.y=370;	cardsUsed.splice(2,1,'test');	card1.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=3; returnCardsToHand();
+					}				
+				}else 
+				if(cardsUsed[2]==card2){
+					card2.x=900;card2.y=370;	cardsUsed.splice(2,1,'test');	card2.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=3; returnCardsToHand();
+					}				
+				}else 
+				if(cardsUsed[2]==card3){
+					card3.x=1000;card3.y=370;	cardsUsed.splice(2,1,'test');	card3.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=3; returnCardsToHand();
+					}				
+				}else 
+				if(cardsUsed[2]==card4){
+					card4.x=1100;card4.y=370;	cardsUsed.splice(2,1,'test');	card4.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=3; returnCardsToHand();
+					}				
+				}else 
+				if(cardsUsed[2]==card5){
+					card5.x=1200;card5.y=370;	cardsUsed.splice(2,1,'test');	card5.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=3; returnCardsToHand();
+					}				
+				}else 
+				if(cardsUsed[2]==card6){
+					card6.x=1300;card6.y=370;	cardsUsed.splice(2,1,'test');	card6.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=3; returnCardsToHand();
+					}				
+				}else 
+				if(cardsUsed[2]==card7){
+					card7.x=1400;card7.y=370;	cardsUsed.splice(2,1,'test');	card7.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=3; returnCardsToHand();
+					}
+				}
+				console.log(cardsUsed);
+			}
+			if((sketch.mouseX>850&&sketch.mouseX<951 && sketch.mouseY>100&&sketch.mouseY<251)){
+				console.log('4th move clicked')
+				if(cardsUsed[3]==card1){
+					card1.x=800;card1.y=370;	cardsUsed.splice(3,1,'test');	card1.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=4; returnCardsToHand();
+					}
+				}else 
+				if(cardsUsed[3]==card2){
+					card2.x=900;card2.y=370;	cardsUsed.splice(3,1,'test');	card2.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=4; returnCardsToHand();
+					}
+				}else 
+				if(cardsUsed[3]==card3){
+					card3.x=1000;card3.y=370;	cardsUsed.splice(3,1,'test');	card3.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=4; returnCardsToHand();
+					}
+				}else 
+				if(cardsUsed[3]==card4){
+					card4.x=1100;card4.y=370;	cardsUsed.splice(3,1,'test');	card4.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=4; returnCardsToHand();
+					}
+				}else 
+				if(cardsUsed[3]==card5){
+					card5.x=1200;card5.y=370;	cardsUsed.splice(3,1,'test');	card5.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=4; returnCardsToHand();
+					}
+				}else 
+				if(cardsUsed[3]==card6){
+					card6.x=1300;card6.y=370;	cardsUsed.splice(3,1,'test');	card6.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=4; returnCardsToHand();
+					}
+				}else 
+				if(cardsUsed[3]==card7){
+					card7.x=1400;card7.y=370;	cardsUsed.splice(3,1,'test');	card7.used=false;	console.log('poop')
+					if(!(!cardsUsed.hasOwnProperty(2))){	moveSelected=4; returnCardsToHand();
+					}
 				}
 				console.log(cardsUsed);
 			}
 
 
-			// end turn
-			if(sketch.mouseX>700&&sketch.mouseX<751 && sketch.mouseY>460&&sketch.mouseY<511){
-				console.log('ended turn');				
-				console.log(playerTurn);
+			// // end turn
+			// if(sketch.mouseX>700&&sketch.mouseX<751 && sketch.mouseY>460&&sketch.mouseY<511){
+			// 	console.log('ended turn');				
+			// 	console.log(playerTurn);
 
-				playerTurn=false;
-			}
+			// 	playerTurn=false;
+			// }
 
 
-		
 	}
+	
 },'game-div');
