@@ -6,10 +6,10 @@ class Person extends GameObject {
         this.isPlayerControlled = config.isPlayerControlled || false;
 
         this.directionUpdate = {
-            "up": ["y", -1],
-            "down": ["y", 1],
-            "left": ["x", -1],
-            "right": ["x", 1],
+            "up": ["y",-1],
+            "down": ["y",1],
+            "left": ["x",-1],
+            "right": ["x",1],
         }
     }
 
@@ -17,7 +17,7 @@ class Person extends GameObject {
         if (this.movingProgressRemaining > 0){
         this.updatePosition();
         } else {
-            if(this.isPlayerControlled && state.arrow){
+            if(!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow){
                 this.startBehavior(state, {
                     type: "walk",
                     direction: state.arrow
@@ -33,12 +33,25 @@ class Person extends GameObject {
         if(behavior.type === "walk"){
             //stop here if space is not free
             if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+                
+                behavior.retry && setTimeout (() =>{
+                    this.startBehavior(state, behavior)
+                }, 10);
                 return;
             }
             //ready to walk
             state.map.moveWall(this.x, this.y, this.direction);
             this.movingProgressRemaining = 16;
+            this.updateSprite(state);
 
+    }
+    if (behavior.type === "stand"){
+        setTimeout(() => {
+            utils.emitEvent("PersonStandComplete", {
+                whoId: this.id
+            })
+        }, behavior.time)
+    
     }
 }
     updatePosition(){
