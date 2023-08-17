@@ -29,10 +29,11 @@ let moveUsdY=100;
 let undoTip=false;let qstnOnDisplay=false;let qstnsAnswered=0;
 infoImg.style.visibility='hidden';
 
-const card={	//card object
+const card={
 	name:"",image:"",type:"",description:"",cardPos:0,
 }
 
+// CARD OBJECT
 function createCard(NAME,IMAGE,TYPE,DESCRIPTION,X,Y,QUESTION,ANSWER){
 	let newCard=Object.create(card);
 	newCard.name=NAME;
@@ -48,13 +49,14 @@ function createCard(NAME,IMAGE,TYPE,DESCRIPTION,X,Y,QUESTION,ANSWER){
 }
 
 // CREATE CARDS (cards' image path included here)
-card1=createCard('test 1',"Animallogic_Luna.png",'math','poopyhead',800,370,'who wins lion vs sun?',  1);
-card2=createCard('test 2',"pikachu.png",'english','poopyhead',900,370,'who wins lion vs sun?',  'hilarioushead');
-card3=createCard('test 3',"Animallogic_Luna.png",'math','poopyhead',1000,370,'who wins lion vs sun?',  3);
-card4=createCard('test 4',"Animallogic_Luna.png",'english','poopyhead',1100,370,'who wins lion vs sun?',  4);
-card5=createCard('test 5',"Animallogic_Luna.png",'math','poopyhead',1200,370,'who wins lion vs sun?',  5);
-card6=createCard('test 6',"Animallogic_Luna.png",'english','poopyhead',1300,370,'who wins lion vs sun?',  6);
-card7=createCard('test 7',"Animallogic_Luna.png",'math','poopyhead',1400,370,'who wins lion vs sun?',  7);
+//change questions to sat questions and create a correct answer of a,b,c,d
+card1=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',800,370,  'who wins lion vs sun?',  1);
+card2=createCard('English',"englishbook.png.png",'english','Heals 1hp',900,370,  'who wins lion vs sun?',  'hilarioushead');
+card3=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1000,370,  'who wins lion vs sun?',  3);
+card4=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1100,370,  'who wins lion vs sun?',  4);
+card5=createCard('English',"englishbook.png.png",'english','Heals 1hp',1200,370,  'who wins lion vs sun?',  5);
+card6=createCard('English',"englishbook.png.png",'english','Heals 1hp',1300,370,  'who wins lion vs sun?',  6);
+card7=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1400,370,  'who wins lion vs sun?',  7);
 console.log(card1);
 // card1Img=card1.image;
 // enemyImgS.push(card1.image);
@@ -67,19 +69,21 @@ console.log(card1);
 enemyImgS.push('Animallogic_Luna.png');
 
 	// cardsImg.push(card1.image);
+	// pushes cards' images to an array
 for(let m=0;m<cards.length;m++){cardsImg.push(cards[m].image)}
 
 
 // p5
 // https://github.com/processing/p5.js/wiki/GLobal-and-instance-mode
+	// this is an instance p5 canvas, any p5 methods you use (ex: eliipse,rect,text) need to be prefexed with 'sketch.[p5 thing]'
 let gamep5=new p5(
 	(sketch)=>{
 
 		
 	sketch.preload=()=>{
-	// load images
+		// load images
 		enemyImg=sketch.loadImage(`images/${enemyImgS[0]}`);
-			// takes image path of enemy based on image array index, change this for multiple enemies
+			// takes image path of enemy based on image array index, change the 0 for other enemies
 
 		playerImg=sketch.loadImage('images/pikachu.png');
 
@@ -624,48 +628,57 @@ let gamep5=new p5(
 
 						// qstnOnDisplay=true;
 						
-						if(cardsUsed[a].type=='math' && qstnOnDisplay==false){	//math is attack
-							qstnOnDisplay=true;
-							//display question and answer box
-							if(qstnOnDisplay==true){
-								let f=a;
-								console.log('math card attack');
-								infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
-								infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
-								answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
-								submitBTN.onclick=()=>{
-									event.preventDefault();
-									if(answerBox.value==cardsUsed[a].answer)	console.log('math question answered right');
-									qstnOnDisplay=false;a=f;console.log(a);qstnsAnswered++;
-
+						function displayQstn(){
+							if(cardsUsed[a].type=='math' && qstnOnDisplay==false){	//math is attack
+								qstnOnDisplay=true;
+								//display question and answer box
+	
+								if(qstnOnDisplay==true){
+									let f=a;
+									console.log('math card attack');
+									infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
+									infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
+									answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
+									submitBTN.onclick=()=>{
+										event.preventDefault();
+										if(answerBox.value==cardsUsed[a].answer)	console.log('math question answered right');
+										qstnOnDisplay=false;a=f;console.log(a);qstnsAnswered++;
+	
+									}
+									// trigger any attack animation afterwards and edit enemy hp 
+	
+									
 								}
-								// trigger any attack animation afterwards
-
-								
+	
 							}
-
+	
+							if(cardsUsed[a].type=='english' && qstnOnDisplay==false){	//the only other type is english/grammer which will be defense
+								qstnOnDisplay=true;
+								if(qstnOnDisplay==true){
+									let f=a;
+									console.log('english card defensive');
+									infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
+									infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
+									answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
+									submitBTN.onclick=()=>{
+										event.preventDefault();
+										if(answerBox.value==cardsUsed[a].answer)	console.log('english question answered right');
+										qstnOnDisplay=false;a=f;qstnsAnswered++;
+									}
+									// trigger any attack animation afterwards and edit enemy hp
+	
+									
+								}
+	
+							}
 						}
 
-						if(cardsUsed[a].type=='english' && qstnOnDisplay==false){	//the only other type is english/grammer which will be defense
-							qstnOnDisplay=true;
-							if(qstnOnDisplay==true){
-								let f=a;
-								console.log('english card defensive');
-								infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
-								infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
-								answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
-								submitBTN.onclick=()=>{
-									event.preventDefault();
-									if(answerBox.value==cardsUsed[a].answer)	console.log('english question answered right');
-									qstnOnDisplay=false;a=f;qstnsAnswered++;
-								}
-								// trigger any attack animation afterwards
+						displayQstn();
 
-								
-							}
 
-						}
-						if(qstnsAnswered==0)	a--;
+						// @ issue so far: the for loop, loops through all the questions and only displays one to be answered, consecutive questions arent shown AFTER entering an answer into the input box and pressing submit
+
+
 					
 					}
 				}
