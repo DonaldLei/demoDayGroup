@@ -18,7 +18,7 @@ let card1Img;let card2Img;let card3Img;let card4Img;let card5Img;let card6Img;le
 let card1;let card2;let card3;let card4;let card5;let card6;let card7;
 
 // data variables
-let enemeyHp=0;let playerHp=10;
+let enemeyHp=10;let playerHp=10;
 let cards=[];let cardsImg=[];let cardsUsed=[,,,,];
 
 // control visibility
@@ -50,13 +50,29 @@ function createCard(NAME,IMAGE,TYPE,DESCRIPTION,X,Y,QUESTION,ANSWER){
 
 // CREATE CARDS (cards' image path included here)
 //change questions to sat questions and create a correct answer of a,b,c,d
-card1=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',800,370,  'who wins lion vs sun?',  1);
-card2=createCard('English',"englishbook.png.png",'english','Heals 1hp',900,370,  'who wins lion vs sun?',  'hilarioushead');
-card3=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1000,370,  'who wins lion vs sun?',  3);
-card4=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1100,370,  'who wins lion vs sun?',  4);
-card5=createCard('English',"englishbook.png.png",'english','Heals 1hp',1200,370,  'who wins lion vs sun?',  5);
-card6=createCard('English',"englishbook.png.png",'english','Heals 1hp',1300,370,  'who wins lion vs sun?',  6);
-card7=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1400,370,  'who wins lion vs sun?',  7);
+card1=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',800,370,
+	  'A gas station sells regular gasoline for $2.39 per gallon and premium gasoline for $2.79 per gallon. If the gas station sold a total of 550 gallons of both types of gasoline in one day for a total of $1,344.50, how many gallons of premium gasoline were sold?'
+	  ,  75);	//<---- answer
+card2=createCard('English',"englishbook.png.png",'english','Heals 1hp',900,370,
+	  'The speakers of what has come to be known as (1) "Appalachian English has used" a form of English that few can explain. Select which letter best replaces the text in quotes? (A) NO CHANGE (B) Appalachian English uses (C) Appalachian English use (D) Appalachian English using'
+	  ,  'C');	//<---- answer
+card3=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1000,370,
+	  'In the complex number system, which of the following is equal to (14 - 2i)(7 + 12i)? (Note: i = √−1)'
+	  ,  3);	//<---- answer
+card4=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1100,370,
+	  'who wins lion vs sun?'
+	  ,  4);	//<---- answer
+card5=createCard('English',"englishbook.png.png",'english','Heals 1hp',1200,370,
+	  'who wins lion vs sun?'
+	  ,  5);	//<---- answer
+card6=createCard('English',"englishbook.png.png",'english','Heals 1hp',1300,370,
+	  'who wins lion vs sun?'
+	  ,  6);	//<---- answer
+card7=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1400,370,
+	  'who wins lion vs sun?'
+	  ,  7);	//<---- answer
+
+
 console.log(card1);
 // card1Img=card1.image;
 // enemyImgS.push(card1.image);
@@ -632,20 +648,24 @@ let gamep5=new p5(
 							if(cardsUsed[a].type=='math' && qstnOnDisplay==false){	//math is attack
 								qstnOnDisplay=true;
 								//display question and answer box
-	
 								if(qstnOnDisplay==true){
-									let f=a;
 									console.log('math card attack');
 									infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
 									infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
 									answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
 									submitBTN.onclick=()=>{
 										event.preventDefault();
-										if(answerBox.value==cardsUsed[a].answer)	console.log('math question answered right');
-										qstnOnDisplay=false;a=f;console.log(a);qstnsAnswered++;
-	
+										if(answerBox.value==cardsUsed[a].answer){	console.log('math question answered right');
+										qstnOnDisplay=false;qstnsAnswered++;answerBox.value='';
+										if(!(!cardsUsed.hasOwnProperty(a+1)) || cardsUsed[a+1]=='test') a++;
+										displayQstn();
+										
+										// trigger any attack animation afterwards and change health variables
+										enemeyHp--;
+
+										}
 									}
-									// trigger any attack animation afterwards and edit enemy hp 
+									
 	
 									
 								}
@@ -655,28 +675,29 @@ let gamep5=new p5(
 							if(cardsUsed[a].type=='english' && qstnOnDisplay==false){	//the only other type is english/grammer which will be defense
 								qstnOnDisplay=true;
 								if(qstnOnDisplay==true){
-									let f=a;
 									console.log('english card defensive');
 									infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
 									infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
 									answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
 									submitBTN.onclick=()=>{
 										event.preventDefault();
-										if(answerBox.value==cardsUsed[a].answer)	console.log('english question answered right');
-										qstnOnDisplay=false;a=f;qstnsAnswered++;
+										if(answerBox.value==cardsUsed[a].answer){	console.log('english question answered right');
+										qstnOnDisplay=false;qstnsAnswered++;answerBox.value='';
+										if(!(!cardsUsed.hasOwnProperty(a+1)) || cardsUsed[a+1]=='test') a++;
+										displayQstn();
+
+										// trigger any attack animation afterwards and change health variables
+										playerHp++;
+
+										}
 									}
-									// trigger any attack animation afterwards and edit enemy hp
-	
+									
 									
 								}
 	
 							}
 						}
-
 						displayQstn();
-
-
-						// @ issue so far: the for loop, loops through all the questions and only displays one to be answered, consecutive questions arent shown AFTER entering an answer into the input box and pressing submit
 
 
 					
