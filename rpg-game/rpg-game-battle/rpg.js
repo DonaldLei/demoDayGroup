@@ -7,6 +7,7 @@ let infoName=document.getElementById('cardName');
 let infoDesc=document.getElementById('cardDescription');
 
 let answerBox=document.getElementById('answerBox');
+let submitBTN=document.getElementById('submitBTN');
 
 // image variables
 let enemyImgS=[]; 	//array of enemy images, if there are multiple enemies
@@ -25,14 +26,14 @@ let playerTurn=true;let cardChosen=false;let cardSelected=0;moveSelected=0;
 let useBTNx=700;let useBTNy=400;
 let endTrnBTNx=700;let endTrnBTNy=460;
 let moveUsdY=100;
-let undoTip=false;
+let undoTip=false;let qstnOnDisplay=false;
 infoImg.style.visibility='hidden';
 
 const card={
 	name:"",image:"",type:"",description:"",cardPos:0,
 }
 
-function createCard(NAME,IMAGE,TYPE,DESCRIPTION,X,Y){
+function createCard(NAME,IMAGE,TYPE,DESCRIPTION,X,Y,QUESTION,ANSWER){
 	let newCard=Object.create(card);
 	newCard.name=NAME;
 	newCard.image=IMAGE;
@@ -41,18 +42,19 @@ function createCard(NAME,IMAGE,TYPE,DESCRIPTION,X,Y){
 	newCard.x=X;
 	newCard.y=Y;
 	newCard.used=false;
+	newCard.question=QUESTION;newCard.answer=ANSWER;
 	cards.push(newCard);
 	return newCard;
 }
 
 // CREATE CARDS (cards' image path included here)
-card1=createCard('test 1',"animallogic_Luna.png",'math','poopyhead',800,370);
-card2=createCard('test 2',"pikachu.png",'math','poopyhead',900,370);
-card3=createCard('test 3',"animallogic_Luna.png",'math','poopyhead',1000,370);
-card4=createCard('test 4',"animallogic_Luna.png",'math','poopyhead',1100,370);
-card5=createCard('test 5',"animallogic_Luna.png",'math','poopyhead',1200,370);
-card6=createCard('test 6',"animallogic_Luna.png",'math','poopyhead',1300,370);
-card7=createCard('test 7',"animallogic_Luna.png",'math','poopyhead',1400,370);
+card1=createCard('test 1',"Animallogic_Luna.png",'math','poopyhead',800,370,'who wins lion vs sun?',  1);
+card2=createCard('test 2',"pikachu.png",'english','poopyhead',900,370,'who wins lion vs sun?',  'hilarioushead');
+card3=createCard('test 3',"Animallogic_Luna.png",'math','poopyhead',1000,370,'who wins lion vs sun?',  3);
+card4=createCard('test 4',"Animallogic_Luna.png",'english','poopyhead',1100,370,'who wins lion vs sun?',  4);
+card5=createCard('test 5',"Animallogic_Luna.png",'math','poopyhead',1200,370,'who wins lion vs sun?',  5);
+card6=createCard('test 6',"Animallogic_Luna.png",'english','poopyhead',1300,370,'who wins lion vs sun?',  6);
+card7=createCard('test 7',"Animallogic_Luna.png",'math','poopyhead',1400,370,'who wins lion vs sun?',  7);
 console.log(card1);
 // card1Img=card1.image;
 // enemyImgS.push(card1.image);
@@ -62,7 +64,7 @@ console.log(card1);
 
 // IMAGE ARRAYS
 	//add images to enemy array (if multiple enemies)
-enemyImgS.push('animallogic_Luna.png');
+enemyImgS.push('Animallogic_Luna.png');
 
 	// cardsImg.push(card1.image);
 for(let m=0;m<cards.length;m++){cardsImg.push(cards[m].image)}
@@ -616,10 +618,49 @@ let gamep5=new p5(
 
 				}
 				for(let a=0;a<cardsUsed.length;a++){
-					if(cardsUsed[a]!='test' && !(!cardsUsed.hasOwnProperty(a))){	//go thru use cards array for player moves
+					if(cardsUsed[a]!='test' && !(!cardsUsed.hasOwnProperty(a))){	//go thru usedcards array for player moves
 					// console.log(cardsUsed);
 					// console.log(cardsUsed[a].name);
 
+					if(qstnOnDisplay==false){
+						// qstnOnDisplay=true;
+						
+						if(cardsUsed[a].type=='math' && qstnOnDisplay==false){	//math is attack
+							qstnOnDisplay=true;
+							//display question and answer box
+							if(qstnOnDisplay==true){
+								console.log('math card attack');
+								infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
+								infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
+								answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
+								submitBTN.onclick=()=>{
+									event.preventDefault();
+									if(answerBox.value==cardsUsed[a].answer)	console.log('math question answered right');
+								}
+								// trigger any attack animation afterwards
+
+								qstnOnDisplay=false;
+							}
+
+						}
+						if(cardsUsed[a].type=='english' && qstnOnDisplay==false){	//the only other type is english/grammer which will be defense
+							qstnOnDisplay=true;
+							if(qstnOnDisplay==true){
+								console.log('english card defensive');
+								infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
+								infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
+								answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
+								submitBTN.onclick=()=>{
+									event.preventDefault();
+									if(answerBox.value==cardsUsed[a].answer)	console.log('english question answered right');
+								}
+								// trigger any attack animation afterwards
+
+								qstnOnDisplay=false;
+							}
+
+						}
+					}
 					}
 				}
 			}
