@@ -1,6 +1,6 @@
 nav {
-    background-color: blue;
-    padding: 15px;
+    background-color: navy;
+    padding: 5px;
     display: flex;
     justify-content: space-around;
 }
@@ -8,11 +8,16 @@ nav {
     background: grey;
     opacity: 0.5;
 }
+.satL:hover{
+    opacity: 0.5;
+    color: purple;
+
+}
 .navItem {
     font-family: Helvetica;
-    background-color: blue;
-    color: black;
-    font-size: 18px;
+    background-color: navy;
+    color: White;
+    font-size: 16px;
     padding: 5px;
 }
 a {
@@ -28,14 +33,26 @@ a {
 }
 #webTitle {
     text-align: center;
-    background-color: lightblue;
+    background-color: skyblue;
 }
 h1 {
     text-align: center;
+    color: black;
 }
 body {
-    background-color: lightblue;
+    background-color: skyblue;
 }
 .satDesc {
-    text-align: right;
+    text-align: center;
+    font-size: 25px;
 }
+.satImg {
+    text-align: center;
+}
+.satImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: 20;
+  }
