@@ -19,6 +19,7 @@ let card1;let card2;let card3;let card4;let card5;let card6;let card7;
 
 // data variables
 let enemeyHp=10;let playerHp=10;
+let qstnTypeCombo='';let comboMove=0;
 let cards=[];let cardsImg=[];let cardsUsed=[,,,,];
 
 // control visibility
@@ -26,7 +27,7 @@ let playerTurn=true;let cardChosen=false;let cardSelected=0;moveSelected=0;
 let useBTNx=700;let useBTNy=400;
 let endTrnBTNx=700;let endTrnBTNy=460;
 let moveUsdY=100;
-let undoTip=false;let qstnOnDisplay=false;let qstnsAnswered=0;
+let undoTip=false;let qstnOnDisplay=false;let questionFail=false;
 infoImg.style.visibility='hidden';
 
 const card={
@@ -50,28 +51,27 @@ function createCard(NAME,IMAGE,TYPE,DESCRIPTION,X,Y,QUESTION,ANSWER){
 
 // CREATE CARDS (cards' image path included here)
 //change questions to sat questions and create a correct answer of a,b,c,d
-card1=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',800,370,
-	  'A gas station sells regular gasoline for $2.39 per gallon and premium gasoline for $2.79 per gallon. If the gas station sold a total of 550 gallons of both types of gasoline in one day for a total of $1,344.50, how many gallons of premium gasoline were sold?'
-	  ,  75);	//<---- answer
-card2=createCard('English',"englishbook.png.png",'english','Heals 1hp',900,370,
-	  'The speakers of what has come to be known as (1) "Appalachian English has used" a form of English that few can explain. Select which letter best replaces the text in quotes (A) NO CHANGE (B) Appalachian English uses (C) Appalachian English use (D) Appalachian English using'
+card1=createCard('Math',"mathbook.png",'Math','Does 1 damage to the opponent',800,370,
+	  "A gas station sells regular gasoline for $2.39 per gallon and premium gasoline for $2.79 per gallon. If the gas station sold a total of 550 gallons of both types of gasoline in one day for a total of $1,344.50, how many gallons of premium gasoline were sold?      \n(A) 25 \n(B) 75 \n(C) 175 \n(D) 475"
+	  ,  'B');	//<---- answer
+card2=createCard('English',"englishbook.png.png",'English','Heals 1hp',900,370,
+	  'The speakers of what has come to be known as (1) "Appalachian English has used" a form of English that few can explain. Select which letter best replaces the text in quotes.      (A) NO CHANGE (B) Appalachian English uses (C) Appalachian English use (D) Appalachian English using'
 	  ,  'C');	//<---- answer
-card3=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1000,370,
-	  'In the complex number system, which of the following is equal to (14 - 2i)(7 + 12i)? (Note: i = √−1)'
-	  ,  3);	//<---- answer
-card4=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1100,370,
-	  'who wins lion vs sun?'
-	  ,  4);	//<---- answer
-card5=createCard('English',"englishbook.png.png",'english','Heals 1hp',1200,370,
-	  'who wins lion vs sun?'
-	  ,  5);	//<---- answer
-card6=createCard('English',"englishbook.png.png",'english','Heals 1hp',1300,370,
-	  'who wins lion vs sun?'
-	  ,  6);	//<---- answer
-card7=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1400,370,
-	  'who wins lion vs sun?'
-	  ,  7);	//<---- answer
-
+card3=createCard('Math',"mathbook.png",'Math','Does 1 damage to the opponent',1000,370,	//ok so u need double quotes
+	  "In the complex number system, which of the following is equal to (14 - 2i)(7 + 12i)? (Note: i = √−1)   (A) 74 (B) 122 (C) 74 + 154i (D) 122 + 154i"
+	  ,  'D');	//<---- answer
+card4=createCard('Math',"mathbook.png",'Math','Does 1 damage to the opponent',1100,370,
+	  ' If f(x) = 2x 2 + 4 for all real numbers x , which of the following is equal to f(3) + f(5)?     (A) f (4) (B) f (6) (C) f (10) (D) f (15)'
+	  ,  'B');	//<---- answer
+card5=createCard('English',"englishbook.png.png",'English','Heals 1hp',1200,370,
+	  'Many scholars believe Appalachian pronunciation comes from Scots-Irish immigration, but  "some theorizes" that this dialect of English may be closer to what Londoners spoke in Elizabethan times.  Select which letter best replaces the text in quotes.     (A) NO CHANGE (B) some theorized (C) some have theorized (D) some theorize'
+	  ,  'D');	//<---- answer
+card6=createCard('English',"englishbook.png.png",'English','Heals 1hp',1300,370,
+	  'Trying to understand these changes "demonstrate that although we all technically speak English, we speak" very different languages indeed. Select which letter best replaces the text in quotes.         (A) NO CHANGE (B) demonstrate that although we all technically spoke English, we speak (C) demonstrates that although we all technically speak English, we might have been speaking (D) demonstrates that although we all technically speak English, we speak'
+	  ,  'D');	//<---- answer
+card7=createCard('Math',"mathbook.png",'Math','Does 1 damage to the opponent',1400,370,
+	  'The length of a certain rectangle is twice the width. If the area of the rectangle is 128, what is the length of the rectangle?        (A) 4 (B) 8 (C) 16 (D) 21⅓ '
+	  ,  'C');	//<---- answer
 
 console.log(card1);
 // card1Img=card1.image;
@@ -82,11 +82,11 @@ console.log(card1);
 
 // IMAGE ARRAYS
 	//add images to enemy array (if multiple enemies)
-enemyImgS.push('Animallogic_Luna.png');
+enemyImgS.push('collegeboard.png');
 
 	// cardsImg.push(card1.image);
 	// pushes cards' images to an array
-for(let m=0;m<cards.length;m++){cardsImg.push(cards[m].image)}
+for(let m=0;m<cards.length;m++)	cardsImg.push(cards[m].image);
 
 
 // p5
@@ -101,7 +101,7 @@ let gamep5=new p5(
 		enemyImg=sketch.loadImage(`images/${enemyImgS[0]}`);
 			// takes image path of enemy based on image array index, change the 0 for other enemies
 
-		playerImg=sketch.loadImage('images/pikachu.png');
+		playerImg=sketch.loadImage('images/finalhero_3_1.png');
 
 		card1Img=sketch.loadImage(`images/${cardsImg[0]}`);
 		card2Img=sketch.loadImage(`images/${cardsImg[1]}`);
@@ -149,41 +149,51 @@ let gamep5=new p5(
 		sketch.image(playerImg,1150,50,300,300);
 
 		if(playerTurn==true){
-		// // items box
-		// sketch.rect(5,425,250,95);
-		// sketch.text('ITEMS',110,420);
-		
-		// moves used
-		// sketch.rect(550,100,400,100);
-		// sketch.rect(550,moveUsdY,100,150);
-		// sketch.rect(650,moveUsdY,100,150);
-		// sketch.rect(750,moveUsdY,100,150);
-		// sketch.rect(850,moveUsdY,100,150);
-		if(cardsUsed.some(card=>card) && undoTip==true){
-			sketch.text('Clicking a card will undo a move and its consecutive ones.',600,275);}else{}
-			// https://stackoverflow.com/questions/8217419/how-to-determine-if-a-javascript-array-contains-an-object-with-an-attribute-that
+			// // items box
+			// sketch.rect(5,425,250,95);
+			// sketch.text('ITEMS',110,420);
+			
+			// moves used
+			// sketch.rect(550,100,400,100);
+			// sketch.rect(550,moveUsdY,100,150);
+			// sketch.rect(650,moveUsdY,100,150);
+			// sketch.rect(750,moveUsdY,100,150);
+			// sketch.rect(850,moveUsdY,100,150);
+			if(cardsUsed.some(card=>card) && undoTip==true){
+				sketch.text('Clicking a card will undo a move and its consecutive ones.\nLining up cards of the same type (english/math) will increase the effectivess of following cards \nif you answer correctly.',600,275);}else{}
+				// https://stackoverflow.com/questions/8217419/how-to-determine-if-a-javascript-array-contains-an-object-with-an-attribute-that
 
-		// 'cards'
-		// sketch.rect(800,370,815,150);
-		sketch.image(card1Img, card1.x, card1.y, 100,150);
-		sketch.image(card2Img, card2.x, card2.y, 100,150);
-		sketch.image(card3Img, card3.x, card3.y, 100,150);
-		sketch.image(card4Img, card4.x, card4.y, 100,150);
-		sketch.image(card5Img, card5.x, card5.y, 100,150);
-		sketch.image(card6Img, card6.x, card6.y, 100,150);
-		sketch.image(card7Img, card7.x, card7.y, 100,150);
-		// 			x     y   width  height
+			// 'cards'
+			// sketch.rect(800,370,815,150);
+			sketch.image(card1Img, card1.x, card1.y, 100,150);
+			sketch.image(card2Img, card2.x, card2.y, 100,150);
+			sketch.image(card3Img, card3.x, card3.y, 100,150);
+			sketch.image(card4Img, card4.x, card4.y, 100,150);
+			sketch.image(card5Img, card5.x, card5.y, 100,150);
+			sketch.image(card6Img, card6.x, card6.y, 100,150);
+			sketch.image(card7Img, card7.x, card7.y, 100,150);
+			// 			x     y   width  height
 
-		// use card
-		sketch.rect(useBTNx,useBTNy,50);sketch.fill(0);sketch.text('Use',useBTNx+15,useBTNy+30);sketch.fill(255);
+			// use card
+			sketch.rect(useBTNx,useBTNy,50);sketch.fill(0);sketch.text('Use',useBTNx+15,useBTNy+30);sketch.fill(255);
 
-		// end turn
-		sketch.rect(endTrnBTNx,endTrnBTNy,50);sketch.fill(0);sketch.text('End\nTurn',endTrnBTNx+15,endTrnBTNy+25);sketch.fill(255);
+			// end turn
+			sketch.rect(endTrnBTNx,endTrnBTNy,50);sketch.fill(0);sketch.text('End\nTurn',endTrnBTNx+15,endTrnBTNy+25);sketch.fill(255);
 
 
 		}
 
+		// animations and stuff?
+		if(questionFail==true){
+			let qstnFailTxt='Question Failed!'
+			sketch.text(qstnFailTxt,600,300);
+			setTimeout(()=>{
+				sketch.text('',600,550);
+				questionFail=false;
 
+			},2500);
+
+		}
 	}
 
 
@@ -464,7 +474,7 @@ let gamep5=new p5(
 					}
 				}
 			}	
-
+		
 			
 			if((sketch.mouseX>550&&sketch.mouseX<651 && sketch.mouseY>100&&sketch.mouseY<251)){
 				console.log('1st move clicked')
@@ -623,7 +633,7 @@ let gamep5=new p5(
 				console.log(cardsUsed);
 			}
 
-
+		
 			// end turn
 			if(sketch.mouseX>700&&sketch.mouseX<751 && sketch.mouseY>460&&sketch.mouseY<511){
 				console.log('ended turn');				
@@ -632,22 +642,24 @@ let gamep5=new p5(
 				playerTurn=false;
 				function clearInfoDiv(){
 					infoImg.src='';infoImg.style.visibility='hidden';infoName.innerHTML='';infoDesc.innerHTML='';
+					answerBox.style.visibility='hidden';submitBTN.style.visibility='hidden';
 				}
 				clearInfoDiv();
 				
-				for(let a=0;a<cardsUsed.length;	a++){
-					console.log('question #'+a);
+				let a=0;
+				console.log('question #'+a);
 
 					if(cardsUsed[a]!='test' && !(!cardsUsed.hasOwnProperty(a)) && qstnOnDisplay==false){	//go thru usedcards array for player moves
 					// console.log(cardsUsed);
 					// console.log(cardsUsed[a].name);
 
 						// qstnOnDisplay=true;
-						
+
 						function displayQstn(){
-							if(cardsUsed[a].type=='math' && qstnOnDisplay==false){	//math is attack
+							console.log('question #'+a);
+							if(cardsUsed[a].type=='Math' && qstnOnDisplay==false){	//math is attack
 								qstnOnDisplay=true;
-								//display question and answer box
+								qstnTypeCombo=cardsUsed[a].type;
 								if(qstnOnDisplay==true){
 									console.log('math card attack');
 									infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
@@ -655,25 +667,35 @@ let gamep5=new p5(
 									answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
 									submitBTN.onclick=()=>{
 										event.preventDefault();
-										if(answerBox.value==cardsUsed[a].answer){	console.log('math question answered right');
-										qstnOnDisplay=false;qstnsAnswered++;answerBox.value='';
-										if(!(!cardsUsed.hasOwnProperty(a+1)) || cardsUsed[a+1]=='test') a++;
-										displayQstn();
-										
-										// trigger any attack animation afterwards and change health variables
-										enemeyHp--;
-
+										if(answerBox.value==cardsUsed[a].answer){
+											// whatever happens when you get it right
+											enemeyHp-=(1+comboMove);
+											console.log('math question answered right');
+										}else{
+											comboMove=0;
+											questionFail=true;console.log(questionFail);
 										}
+
+										qstnOnDisplay=false;answerBox.value='';
+										if(!(!cardsUsed.hasOwnProperty(a+1)) || cardsUsed[a+1]=='test'){
+											if(cardsUsed[a+1].type==qstnTypeCombo){
+												comboMove++;
+											}else{comboMove=0;}
+										}
+										if(!(!cardsUsed.hasOwnProperty(a+1)) ){
+											a++;
+											displayQstn();
+										}else{clearInfoDiv();}
+										console.log('math question answered');
 									}
 									
-	
-									
 								}
-	
+
 							}
-	
-							if(cardsUsed[a].type=='english' && qstnOnDisplay==false){	//the only other type is english/grammer which will be defense
+
+							if(cardsUsed[a].type=='English' && qstnOnDisplay==false){	//the only other type is english/grammer which will be defense
 								qstnOnDisplay=true;
+								qstnTypeCombo=cardsUsed[a].type;
 								if(qstnOnDisplay==true){
 									console.log('english card defensive');
 									infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
@@ -681,33 +703,47 @@ let gamep5=new p5(
 									answerBox.style.visibility='visible';submitBTN.style.visibility='visible';
 									submitBTN.onclick=()=>{
 										event.preventDefault();
-										if(answerBox.value==cardsUsed[a].answer){	console.log('english question answered right');
-										qstnOnDisplay=false;qstnsAnswered++;answerBox.value='';
-										if(!(!cardsUsed.hasOwnProperty(a+1)) || cardsUsed[a+1]=='test') a++;
-										displayQstn();
-
-										// trigger any attack animation afterwards and change health variables
-										playerHp++;
-
+										if(answerBox.value==cardsUsed[a].answer){
+											// whatever happens when you get it right
+											playerHp+=(2+comboMove);
+											console.log('english question answered right');
+										}else{
+											comboMove=0;
+											questionFail=true;console.log(questionFail);
+											playerHp--;
 										}
+
+										qstnOnDisplay=false;answerBox.value='';
+										if(!(!cardsUsed.hasOwnProperty(a+1)) || cardsUsed[a+1]=='test'){
+											if(cardsUsed[a+1].type==qstnTypeCombo){
+												comboMove++;
+											}else{comboMove=0;}
+										}
+										if(!(!cardsUsed.hasOwnProperty(a+1)) ){
+											a++;
+											displayQstn();
+										}else{clearInfoDiv();}
+										console.log('EN q answered');
+
 									}
 									
+
 									
 								}
-	
+
 							}
 						}
-						displayQstn();
-
-
-					
-					}
+					displayQstn();
+					// console.log('what')
 				}
 
-
+	
 			}
 
-
+				
 	}
-	
+
+
 },'game-div');
+
+// 

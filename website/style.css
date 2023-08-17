@@ -50,3 +50,9 @@ body {
     margin-right: auto;
     width: 50%;
   }
+  .logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
