@@ -26,10 +26,10 @@ let playerTurn=true;let cardChosen=false;let cardSelected=0;moveSelected=0;
 let useBTNx=700;let useBTNy=400;
 let endTrnBTNx=700;let endTrnBTNy=460;
 let moveUsdY=100;
-let undoTip=false;let qstnOnDisplay=false;
+let undoTip=false;let qstnOnDisplay=false;let qstnsAnswered=0;
 infoImg.style.visibility='hidden';
 
-const card={
+const card={	//card object
 	name:"",image:"",type:"",description:"",cardPos:0,
 }
 
@@ -614,21 +614,21 @@ let gamep5=new p5(
 					infoImg.src='';infoImg.style.visibility='hidden';infoName.innerHTML='';infoDesc.innerHTML='';
 				}
 				clearInfoDiv();
-				function cardQuestion(){
+				
+				for(let a=0;a<cardsUsed.length;	a++){
+					console.log('question #'+a);
 
-				}
-				for(let a=0;a<cardsUsed.length;a++){
-					if(cardsUsed[a]!='test' && !(!cardsUsed.hasOwnProperty(a))){	//go thru usedcards array for player moves
+					if(cardsUsed[a]!='test' && !(!cardsUsed.hasOwnProperty(a)) && qstnOnDisplay==false){	//go thru usedcards array for player moves
 					// console.log(cardsUsed);
 					// console.log(cardsUsed[a].name);
 
-					if(qstnOnDisplay==false){
 						// qstnOnDisplay=true;
 						
 						if(cardsUsed[a].type=='math' && qstnOnDisplay==false){	//math is attack
 							qstnOnDisplay=true;
 							//display question and answer box
 							if(qstnOnDisplay==true){
+								let f=a;
 								console.log('math card attack');
 								infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
 								infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
@@ -636,16 +636,20 @@ let gamep5=new p5(
 								submitBTN.onclick=()=>{
 									event.preventDefault();
 									if(answerBox.value==cardsUsed[a].answer)	console.log('math question answered right');
+									qstnOnDisplay=false;a=f;console.log(a);qstnsAnswered++;
+
 								}
 								// trigger any attack animation afterwards
 
-								qstnOnDisplay=false;
+								
 							}
 
 						}
+
 						if(cardsUsed[a].type=='english' && qstnOnDisplay==false){	//the only other type is english/grammer which will be defense
 							qstnOnDisplay=true;
 							if(qstnOnDisplay==true){
+								let f=a;
 								console.log('english card defensive');
 								infoImg.src='./images/'+cardsUsed[a].image;infoImg.style.visibility='visible';
 								infoName.innerHTML=cardsUsed[a].type;infoDesc.innerHTML=cardsUsed[a].question;
@@ -653,16 +657,20 @@ let gamep5=new p5(
 								submitBTN.onclick=()=>{
 									event.preventDefault();
 									if(answerBox.value==cardsUsed[a].answer)	console.log('english question answered right');
+									qstnOnDisplay=false;a=f;qstnsAnswered++;
 								}
 								// trigger any attack animation afterwards
 
-								qstnOnDisplay=false;
+								
 							}
 
 						}
-					}
+						if(qstnsAnswered==0)	a--;
+					
 					}
 				}
+
+
 			}
 
 
