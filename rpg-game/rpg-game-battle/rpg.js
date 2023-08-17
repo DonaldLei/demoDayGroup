@@ -132,7 +132,8 @@ let gamep5=new p5(
 		// enemy hp bar
 		sketch.fill(255,0,0);
 		sketch.rect(10,10,300,20);
-		sketch.fill(0);sketch.text(`hp: ${enemeyHp}`,150,20);sketch.fill(255);
+		sketch.textSize(20);
+		sketch.fill(0);sketch.text(`hp: ${enemeyHp}`,150,25);sketch.fill(255)
 
 		// enemy area box
 		sketch.rect(30,50,300,300);
@@ -141,7 +142,7 @@ let gamep5=new p5(
 		// player hp bar
 		sketch.fill(255,0,0);
 		sketch.rect(1200,10,300,20);
-		sketch.fill(0);sketch.text(`hp: ${playerHp}`,1350,20);sketch.fill(255);
+		sketch.fill(0);sketch.text(`hp: ${playerHp}`,1350,25);sketch.fill(255);sketch.textSize(12);
 
 
 		// player area box
