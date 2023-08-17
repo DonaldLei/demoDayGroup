@@ -25,11 +25,9 @@ a {
     text-align: center;
     text-decoration: none;
 }
-#missionStatement {
-    text-align: center;
-}
 #team {
     text-align: center;
+    font-size: larger;
 }
 #webTitle {
     text-align: center;
@@ -45,9 +43,6 @@ body {
 .satDesc {
     text-align: center;
     font-size: 25px;
-}
-.satImg {
-    text-align: center;
 }
 .satImg {
     display: block;
