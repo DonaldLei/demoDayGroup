@@ -54,7 +54,7 @@ card1=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',80
 	  'A gas station sells regular gasoline for $2.39 per gallon and premium gasoline for $2.79 per gallon. If the gas station sold a total of 550 gallons of both types of gasoline in one day for a total of $1,344.50, how many gallons of premium gasoline were sold?'
 	  ,  75);	//<---- answer
 card2=createCard('English',"englishbook.png.png",'english','Heals 1hp',900,370,
-	  'The speakers of what has come to be known as (1) "Appalachian English has used" a form of English that few can explain. Select which letter best replaces the text in quotes? (A) NO CHANGE (B) Appalachian English uses (C) Appalachian English use (D) Appalachian English using'
+	  'The speakers of what has come to be known as (1) "Appalachian English has used" a form of English that few can explain. Select which letter best replaces the text in quotes (A) NO CHANGE (B) Appalachian English uses (C) Appalachian English use (D) Appalachian English using'
 	  ,  'C');	//<---- answer
 card3=createCard('Math',"mathbook.png",'math','Does 1 damage to the opponent',1000,370,
 	  'In the complex number system, which of the following is equal to (14 - 2i)(7 + 12i)? (Note: i = √−1)'
